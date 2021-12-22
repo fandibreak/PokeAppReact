@@ -61,8 +61,10 @@ const Pokev2 = () => {
           <label htmlFor='name'><h4>Busca aqui tu Pokemon</h4></label><br /><br />
           <input type="text" name="name" id="name" required /><br /><br />
           <button >Buscar</button>
+          <div className="cardpok">
           {pokemons.map((pokemon, i) => <Cardv2 pokemons={pokemon} key={i} />)}
           {/* { <Cardv2 pokemons={pokemons} />}  */}
+          </div>
         </form>
       </div>
     </div>
