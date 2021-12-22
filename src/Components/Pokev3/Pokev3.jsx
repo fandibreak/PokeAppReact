@@ -14,14 +14,14 @@ const  Pokev3 = () => {
 
   const [search, setSearch] = useState(''); //input
 
-  const [debouncedText] = useDebounce(search, 1000);
+  const [debouncedText] = useDebounce(search, 2000);
 
   useEffect(() => {
 
     const getpokemon = async (a) => {
 
       try {
-
+        
         const getpokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${debouncedText}`)
         const data = getpokemon.data
  

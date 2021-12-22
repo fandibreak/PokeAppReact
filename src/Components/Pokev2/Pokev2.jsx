@@ -17,20 +17,25 @@ const Pokev2 = () => {
 
       try {
 
-        const getpokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search}`)
+        if (pokemons.find(existpoke => existpoke.name === search)) {
 
-        const data = getpokemon.data
+          alert('Este pokemon ya Existe');
 
-        setPokemons([...pokemons,{
-          name: data.name,
-          img: data.sprites.front_default
-        }]) 
-   
+        } else {
+
+          const getpokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search}`)
+
+          const data = getpokemon.data
        
-      } catch (e)
-      {
+          setPokemons([...pokemons, {
+            name: data.name,
+            img: data.sprites.front_default
+          }])
+        
+        }
+      } catch (e) {
         setPokemons([])
-      alert('Pokemon not found in BBDD')
+        //alert('Pokemon not found in BBDD')
       }
     }
     getpokemon();
@@ -38,15 +43,15 @@ const Pokev2 = () => {
   }, [search])
 
 
-  const hanledSubmit = (e) =>{
-  e.preventDefault()
-  setSearch(e.target.name.value)
-  e.target.name.value=''
+  const hanledSubmit = (e) => {
+    e.preventDefault()
+    setSearch(e.target.name.value)
+    e.target.name.value = ''
   }
 
- 
+
   console.log(pokemons)
-  
+
 
   return <div><h4>Bienvenido al Buscador de Pokemons</h4>
     <p> </p>
@@ -56,7 +61,7 @@ const Pokev2 = () => {
           <label htmlFor='name'><h4>Busca aqui tu Pokemon</h4></label><br /><br />
           <input type="text" name="name" id="name" required /><br /><br />
           <button >Buscar</button>
-          { pokemons.map((pokemon,i) => <Cardv2 pokemons={pokemon} key={i} />)} 
+          {pokemons.map((pokemon, i) => <Cardv2 pokemons={pokemon} key={i} />)}
           {/* { <Cardv2 pokemons={pokemons} />}  */}
         </form>
       </div>

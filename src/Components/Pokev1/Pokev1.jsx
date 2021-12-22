@@ -53,8 +53,10 @@ const Pokev1 = () => {
         <form onSubmit={hanledSubmit}>
           <label htmlFor='name'><h4>Busca aqui tu Pokemon</h4></label><br /><br />
           <input type="text" name="name" id="name" required /><br /><br />
-          <button >Buscar</button>
+          <button >Buscar</button><br />
+          <div className="cardpok">
           { <Card pokemons={pokemons} />} 
+          </div>
         </form>
       </div>
     </div>
